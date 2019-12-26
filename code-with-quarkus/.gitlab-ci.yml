@@ -14,13 +14,13 @@ cache:
 before_script:
   - cd code-with-quarkus
 
-business-build:
+quarkus-build:
   stage: build
   script:
     - mvn help:evaluate -Dexpression=settings.localRepository
     - mvn $MAVEN_CLI_OPTS compile quarkus:build
 
-business-test:
+quarkus-test:
   stage: test
   script:
     - mvn $MAVEN_CLI_OPTS test
