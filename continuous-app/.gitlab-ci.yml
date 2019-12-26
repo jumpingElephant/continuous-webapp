@@ -1,0 +1,22 @@
+image: node:8.17.0-jessie-slim
+
+variables:
+
+cache:
+  paths:
+    - continuous-app/node_modules/
+
+before_script:
+  - cd continuous-app
+
+angular-build:
+  stage: build
+  script:
+    - npm install continuous-app
+    - npm install -g @angular/cli@8.3.21
+    - ng build
+
+angular-test:
+  stage: test
+  script:
+    - ng test

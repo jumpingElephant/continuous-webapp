@@ -38,12 +38,6 @@ build:
   script:
     - date
 
-#presentation:
-#  stage: build
-#  image: node:8.17.0-jessie-slim
-#  script:
-#    - npm install continuous-app
-#    - npm install -g @angular/cli@8.3.21
-
 include:
   - code-with-quarkus/.gitlab-ci.yml
+  - continuous-app/.gitlab-ci.yml
