@@ -34,7 +34,6 @@ variables:
 cache:
   paths:
     - code-with-quarkus/.m2/repository/
-    - code-with-quarkus/target/
     - continuous-app/node_modules/
 
 build:

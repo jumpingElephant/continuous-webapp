@@ -10,7 +10,6 @@ quarkus-build:
   before_script:
     - cd code-with-quarkus
   script:
-    - mvn help:evaluate -Dexpression=settings.localRepository
     - mvn $MAVEN_CLI_OPTS compile quarkus:build
 
 quarkus-test:
