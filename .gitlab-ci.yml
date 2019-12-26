@@ -31,6 +31,12 @@ variables:
   # If you want to deploy to staging first, set STAGING_ENABLED environment variable.
   STAGING_ENABLED: 1
 
+cache:
+  paths:
+    - code-with-quarkus/.m2/repository/
+    - code-with-quarkus/target/
+    - continuous-app/node_modules/
+
 build:
   stage: build
   script:
