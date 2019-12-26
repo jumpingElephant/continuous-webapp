@@ -16,17 +16,17 @@ cache:
     - .m2/repository/
     - target/
 
-build:
+business-build:
   stage: build
   script:
     - mvn $MAVEN_CLI_OPTS compile quarkus:build
 
-test:
+business-test:
   stage: test
   script:
     - mvn $MAVEN_CLI_OPTS test
 
-run:
+run42:
   stage: run
   script:
     - mvn $MAVEN_CLI_OPTS --version
