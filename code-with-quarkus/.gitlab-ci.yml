@@ -22,6 +22,7 @@ before_script:
 business-build:
   stage: build
   script:
+    - mvn help:evaluate -Dexpression=settings.localRepository
     - mvn $MAVEN_CLI_OPTS compile quarkus:build
 
 business-test:
