@@ -13,7 +13,7 @@ variables:
 
 cache:
   paths:
-    - .m2/repository/
+    - code-with-quarkus/.m2/repository/
     - target/
 
 before_script:
