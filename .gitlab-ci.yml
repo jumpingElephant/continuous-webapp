@@ -1,32 +1,43 @@
-image: maven:latest
+#image: maven:latest
 
 stages:
   - build
   - test
-  - run
+#  - deploy  # dummy stage to follow the template guidelines
+#  - review
+#  - dast
+#  - staging
+#  - canary
+#  - production
+#  - incremental rollout 10%
+#  - incremental rollout 25%
+#  - incremental rollout 50%
+#  - incremental rollout 100%
+#  - performance
+#  - cleanup
 
 variables:
-#  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
-  MAVEN_CLI_OPTS: "--batch-mode --file code-with-quarkus"
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  #    test: TEST_DISABLED
+  #    code_quality: CODE_QUALITY_DISABLED
+  #    license_management: LICENSE_MANAGEMENT_DISABLED
+  #    performance: PERFORMANCE_DISABLED
+  #    sast: SAST_DISABLED
+  #    dependency_scanning: DEPENDENCY_SCANNING_DISABLED
+  #    container_scanning: CONTAINER_SCANNING_DISABLED
+  #    dast: DAST_DISABLED
+  #    review: REVIEW_DISABLED
+  #    stop_review: REVIEW_DISABLED
 
-cache:
-  paths:
-    - .m2/repository/
-    - code-with-quarkus/target/
+  # Continuous deployment to production is enabled by default.
+  # If you want to deploy to staging first, set STAGING_ENABLED environment variable.
+  STAGING_ENABLED: 1
 
-build:
-  stage: build
-  script:
-    - mvn $MAVEN_CLI_OPTS compile quarkus:build
+#presentation:
+#  stage: build
+#  image: node:8.17.0-jessie-slim
+#  script:
+#    - npm install continuous-app
+#    - npm install -g @angular/cli@8.3.21
 
-test:
-  stage: test
-  script:
-    - mvn $MAVEN_CLI_OPTS test
-
-run:
-  stage: run
-  script:
-    - mvn $MAVEN_CLI_OPTS --version
-#    - mvn $MAVEN_CLI_OPTS exec:java -Dexec.mainClass="com.example.app.App"
+include:
+  - code-with-quarkus/.gitlab-ci.yml

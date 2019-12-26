@@ -1,0 +1,33 @@
+image: maven:3.6.3-slim
+
+stages:
+  - build
+  - test
+  - run
+
+variables:
+  #  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  #  MAVEN_CLI_OPTS: "--batch-mode --file code-with-quarkus"
+  MAVEN_CLI_OPTS: "--batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile quarkus:build
+
+test:
+  stage: test
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+
+run:
+  stage: run
+  script:
+    - mvn $MAVEN_CLI_OPTS --version
+#    - mvn $MAVEN_CLI_OPTS exec:java -Dexec.mainClass="com.example.app.App"
