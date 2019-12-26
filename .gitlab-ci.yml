@@ -2,7 +2,8 @@
 
 stages:
   - build
-#  - test
+  - test
+  - run
 #  - deploy  # dummy stage to follow the template guidelines
 #  - review
 #  - dast
