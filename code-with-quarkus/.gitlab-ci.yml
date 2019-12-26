@@ -9,12 +9,11 @@ cache:
     - code-with-quarkus/.m2/repository/
     - code-with-quarkus/target/
 
-before_script:
-  - cd code-with-quarkus
-
 quarkus-build:
   stage: build
   image: maven:3.6.3-slim
+  before_script:
+    - cd code-with-quarkus
   script:
     - mvn help:evaluate -Dexpression=settings.localRepository
     - mvn $MAVEN_CLI_OPTS compile quarkus:build
@@ -22,6 +21,8 @@ quarkus-build:
 quarkus-test:
   stage: test
   image: maven:3.6.3-slim
+  before_script:
+    - cd code-with-quarkus
   script:
     - mvn $MAVEN_CLI_OPTS test
 

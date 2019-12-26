@@ -4,12 +4,11 @@ cache:
   paths:
     - continuous-app/node_modules/
 
-before_script:
-  - cd continuous-app
-
 angular-build:
   stage: build
   image: node:8.17.0-jessie-slim
+  before_script:
+    - cd continuous-app
   script:
     - npm install continuous-app
     - npm install -g @angular/cli@8.3.21
@@ -18,5 +17,7 @@ angular-build:
 angular-test:
   stage: test
   image: node:8.17.0-jessie-slim
+  before_script:
+    - cd continuous-app
   script:
     - ng test
