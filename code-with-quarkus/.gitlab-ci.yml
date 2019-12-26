@@ -16,6 +16,9 @@ cache:
     - .m2/repository/
     - target/
 
+before_script:
+  - cd code-with-quarkus
+
 business-build:
   stage: build
   script:
