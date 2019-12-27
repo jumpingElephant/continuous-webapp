@@ -2,7 +2,7 @@ variables:
 
 angular-build:
   stage: build
-  image: node:8.17.0-jessie-slim
+  image: node:13.5.0-alpine3.11
   before_script:
     - cd continuous-app
   script:
@@ -12,7 +12,7 @@ angular-build:
 
 angular-test:
   stage: test
-  image: node:8.17.0-jessie-slim
+  image: node:13.5.0-alpine3.11
   before_script:
     - cd continuous-app
   script:
