@@ -33,6 +33,7 @@ variables:
 
 cache:
   paths:
+    - .m2/repository/
     - code-with-quarkus/.m2/repository/
     - continuous-app/node_modules/
 
