@@ -1,0 +1,47 @@
+stages:
+  - build
+  - test
+  - run
+#  - deploy  # dummy stage to follow the template guidelines
+#  - review
+#  - dast
+#  - staging
+#  - canary
+#  - production
+#  - incremental rollout 10%
+#  - incremental rollout 25%
+#  - incremental rollout 50%
+#  - incremental rollout 100%
+#  - performance
+#  - cleanup
+
+variables:
+  #    test: TEST_DISABLED
+  #    code_quality: CODE_QUALITY_DISABLED
+  #    license_management: LICENSE_MANAGEMENT_DISABLED
+  #    performance: PERFORMANCE_DISABLED
+  #    sast: SAST_DISABLED
+  #    dependency_scanning: DEPENDENCY_SCANNING_DISABLED
+  #    container_scanning: CONTAINER_SCANNING_DISABLED
+  #    dast: DAST_DISABLED
+  #    review: REVIEW_DISABLED
+  #    stop_review: REVIEW_DISABLED
+
+  # Continuous deployment to production is enabled by default.
+  # If you want to deploy to staging first, set STAGING_ENABLED environment variable.
+  STAGING_ENABLED: 1
+
+cache:
+  paths:
+    - .m2/repository/
+    - code-with-quarkus/.m2/repository/
+    - continuous-app/node_modules/
+
+build:
+  stage: build
+  script:
+    - date
+
+include:
+  - code-with-quarkus/.gitlab-ci.yml
+  - continuous-app/.gitlab-ci.yml

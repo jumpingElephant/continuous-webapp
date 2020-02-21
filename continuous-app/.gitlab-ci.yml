@@ -1,0 +1,19 @@
+variables:
+
+angular-build:
+  stage: build
+  image: node:13.5.0-alpine3.11
+  before_script:
+    - cd continuous-app
+  script:
+    - npm install
+    - npm install -g @angular/cli@8.3.21
+    - ng build
+
+angular-test:
+  stage: test
+  image: node:13.5.0-alpine3.11
+  before_script:
+    - cd continuous-app
+  script:
+    - ng test
